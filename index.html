@@ -39,62 +39,14 @@
             letter-spacing: 1px;
         }
 
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .container.loaded {
-            opacity: 1;
-        }
-
-        .config-box {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .config-box input {
-            background: #222;
-            border: 1px solid #444;
-            color: #fff;
-            padding: 10px;
-            border-radius: 6px;
-            width: 70%;
-            margin: 10px;
-        }
-
-        .config-box button {
-            background: linear-gradient(45deg, #00ff88, #00aaff);
-            border: none;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .loading {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #00ff88;
-            margin: 50px 0;
-            display: none;
-        }
-
         .grand-total-box {
             background: linear-gradient(135deg, #1e1e1e 0%, #141414 100%);
             border: 2px solid #00ff88;
             border-radius: 16px;
             padding: 40px;
-            margin: 30px 0;
+            margin: 30px auto;
             text-align: center;
+            max-width: 600px;
             box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
         }
 
@@ -135,6 +87,34 @@
             border-color: #00ff88;
         }
 
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .overview-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .overview-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .overview-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
         .month-section {
             display: none;
         }
@@ -143,18 +123,12 @@
             display: block;
         }
 
-        .month-header {
-            font-size: 1.8rem;
-            margin: 30px 0 20px;
-            text-align: center;
-            color: #00ff88;
-        }
-
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
         }
 
         .metric-card {
@@ -186,76 +160,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .overview-card {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid #00ff88;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .overview-month {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .overview-value {
+        .month-header {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #00ff88;
-        }
-
-        .last-updated {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .refresh-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #00ff88;
-            color: #000;
-            padding: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
-            font-weight: bold;
-        }
-
-        .error {
-            color: #ff4757;
+            margin: 30px 0 20px;
             text-align: center;
-            margin: 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #333;
-            border-top-color: #00ff88;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            color: #00ff88;
         }
     </style>
 </head>
@@ -265,168 +174,196 @@
         <div class="subtitle">MAY 2025 - APRIL 2026 COMPLETE OVERVIEW</div>
     </div>
 
-    <div class="config-box">
-        <h3>Connect Your Google Apps Script URL</h3>
-        <input type="text" id="scriptUrl" placeholder="Paste your deployed script URL here">
-        <button onclick="connectAndLoad()">Connect</button>
+    <div class="grand-total-box">
+        <div class="grand-total">339</div>
+        <div class="metric-label">Total Annual Services Provided</div>
     </div>
 
-    <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-        <p>Fetching live data...</p>
+    <div class="overview-grid">
+        <div class="overview-card">
+            <div class="overview-month">May-2025</div>
+            <div class="overview-value">78</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Jun-2025</div>
+            <div class="overview-value">56</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Jul-2025</div>
+            <div class="overview-value">205</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Aug-2025</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Sep-2025</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Oct-2025</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Nov-2025</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Dec-2025</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Jan-2026</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Feb-2026</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Mar-2026</div>
+            <div class="overview-value">0</div>
+        </div>
+        <div class="overview-card">
+            <div class="overview-month">Apr-2026</div>
+            <div class="overview-value">0</div>
+        </div>
     </div>
 
-    <div class="error" id="error"></div>
+    <div class="month-selector">
+        <button class="month-btn active" onclick="showMonth('overview')">Overview</button>
+        <button class="month-btn" onclick="showMonth('may')">May-2025</button>
+        <button class="month-btn" onclick="showMonth('jun')">Jun-2025</button>
+        <button class="month-btn" onclick="showMonth('jul')">Jul-2025</button>
+        <button class="month-btn" onclick="showMonth('aug')">Aug-2025</button>
+        <button class="month-btn" onclick="showMonth('sep')">Sep-2025</button>
+        <button class="month-btn" onclick="showMonth('oct')">Oct-2025</button>
+        <button class="month-btn" onclick="showMonth('nov')">Nov-2025</button>
+        <button class="month-btn" onclick="showMonth('dec')">Dec-2025</button>
+        <button class="month-btn" onclick="showMonth('jan')">Jan-2026</button>
+        <button class="month-btn" onclick="showMonth('feb')">Feb-2026</button>
+        <button class="month-btn" onclick="showMonth('mar')">Mar-2026</button>
+        <button class="month-btn" onclick="showMonth('apr')">Apr-2026</button>
+    </div>
 
-    <div class="container" id="dashboard"></div>
+    <div id="overview" class="month-section active">
+        <h2 class="month-header">Annual Summary</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">MH Open Cases (Annual)</div>
+                <div class="metric-value">134</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">MH Close Cases (Annual)</div>
+                <div class="metric-value">64</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Psychiatric Sessions (Annual)</div>
+                <div class="metric-value">44</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">GYN Consultations (Annual)</div>
+                <div class="metric-value">60</div>
+            </div>
+        </div>
+    </div>
 
-    <div class="refresh-btn" onclick="refreshData()" title="Refresh Data">↻</div>
+    <div id="may" class="month-section">
+        <h2 class="month-header">May 2025 - Total: 78</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">MH Open Cases</div>
+                <div class="metric-value">78</div>
+            </div>
+        </div>
+    </div>
 
-    <div class="last-updated" id="lastUpdated"></div>
+    <div id="jun" class="month-section">
+        <h2 class="month-header">June 2025 - Total: 56</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">MH Open Cases</div>
+                <div class="metric-value">56</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="jul" class="month-section">
+        <h2 class="month-header">July 2025 - Total: 205</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">MH Close Cases</div>
+                <div class="metric-value">64</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Psychiatric Sessions</div>
+                <div class="metric-value">44</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">GYN Consultations</div>
+                <div class="metric-value">60</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Papsmear Tests</div>
+                <div class="metric-value">14</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">CM Open Cases</div>
+                <div class="metric-value">14</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">ECA Case Management</div>
+                <div class="metric-value">9</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aug" class="month-section">
+        <h2 class="month-header">August 2025 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="sep" class="month-section">
+        <h2 class="month-header">September 2025 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="oct" class="month-section">
+        <h2 class="month-header">October 2025 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="nov" class="month-section">
+        <h2 class="month-header">November 2025 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="dec" class="month-section">
+        <h2 class="month-header">December 2025 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="jan" class="month-section">
+        <h2 class="month-header">January 2026 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="feb" class="month-section">
+        <h2 class="month-header">February 2026 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="mar" class="month-section">
+        <h2 class="month-header">March 2026 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
+
+    <div id="apr" class="month-section">
+        <h2 class="month-header">April 2026 - Total: 0</h2>
+        <p style="text-align: center; color: #666; margin-top: 50px;">No data for this month</p>
+    </div>
 
     <script>
-        let scriptUrl = '';
-        let currentData = null;
-
-        async function connectAndLoad() {
-            scriptUrl = document.getElementById('scriptUrl').value;
-            if (!scriptUrl) {
-                showError('Please enter your Google Apps Script URL');
-                return;
-            }
-            localStorage.setItem('scriptUrl', scriptUrl);
-            loadData();
-        }
-
-        async function loadData() {
-            if (!scriptUrl) {
-                scriptUrl = localStorage.getItem('scriptUrl');
-                if (scriptUrl) {
-                    document.getElementById('scriptUrl').value = scriptUrl;
-                }
-                return;
-            }
-
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('error').textContent = '';
-            
-            try {
-                const response = await fetch(scriptUrl);
-                currentData = await response.json();
-                displayData(currentData);
-            } catch (error) {
-                showError('Error loading data: ' + error.message);
-            } finally {
-                document.getElementById('loading').style.display = 'none';
-            }
-        }
-
-        function displayData(data) {
-            const container = document.getElementById('dashboard');
-            
-            let html = `
-                <div class="grand-total-box">
-                    <div class="grand-total">${data.grandTotal || 0}</div>
-                    <div class="metric-label">Total Annual Services Provided</div>
-                </div>
-                
-                <div class="overview-grid">
-            `;
-            
-            // Monthly overview
-            data.months.forEach(month => {
-                html += `
-                    <div class="overview-card">
-                        <div class="overview-month">${month}</div>
-                        <div class="overview-value">${data.monthlyTotals[month] || 0}</div>
-                    </div>
-                `;
-            });
-            
-            html += `
-                </div>
-                
-                <div class="month-selector">
-                    <button class="month-btn active" onclick="showMonth('overview')">Overview</button>
-            `;
-            
-            data.months.forEach(month => {
-                html += `<button class="month-btn" onclick="showMonth('${month}')">${month}</button>`;
-            });
-            
-            html += `
-                </div>
-                
-                <div id="overview" class="month-section active">
-                    <h2 class="month-header">Annual Summary</h2>
-                    <div class="metrics-grid">
-            `;
-            
-            // Calculate annual totals
-            const annualMetrics = {};
-            const priorityMetrics = [
-                'MH Close date',
-                'Psychiatric sessions',
-                'GYN consultation',
-                'Papsmear',
-                'CM open case',
-                'ECA Case ManageMent',
-                'Violation',
-                'Referal'
-            ];
-            
-            priorityMetrics.forEach(metric => {
-                let total = 0;
-                data.months.forEach(month => {
-                    total += data.monthlyData[month][metric] || 0;
-                });
-                if (total > 0) {
-                    html += `
-                        <div class="metric-card">
-                            <div class="metric-label">${metric} (Annual)</div>
-                            <div class="metric-value">${total}</div>
-                        </div>
-                    `;
-                }
-            });
-            
-            html += `
-                    </div>
-                </div>
-            `;
-            
-            // Individual month sections
-            data.months.forEach(month => {
-                const monthData = data.monthlyData[month];
-                html += `
-                    <div id="${month}" class="month-section">
-                        <h2 class="month-header">${month} - Total: ${data.monthlyTotals[month] || 0}</h2>
-                        <div class="metrics-grid">
-                `;
-                
-                priorityMetrics.forEach(metric => {
-                    if (monthData[metric] !== undefined && monthData[metric] > 0) {
-                        html += `
-                            <div class="metric-card">
-                                <div class="metric-label">${metric}</div>
-                                <div class="metric-value">${monthData[metric]}</div>
-                            </div>
-                        `;
-                    }
-                });
-                
-                html += `
-                        </div>
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-            container.classList.add('loaded');
-            
-            document.getElementById('lastUpdated').textContent = data.lastUpdated || 'Last updated: ' + new Date().toLocaleString();
-        }
-
         function showMonth(month) {
             // Hide all sections
             document.querySelectorAll('.month-section').forEach(section => {
@@ -439,35 +376,11 @@
             });
             
             // Show selected section
-            if (month === 'overview') {
-                document.getElementById('overview').classList.add('active');
-                document.querySelector('.month-btn').classList.add('active');
-            } else {
-                document.getElementById(month).classList.add('active');
-                event.target.classList.add('active');
-            }
+            document.getElementById(month).classList.add('active');
+            
+            // Mark button as active
+            event.target.classList.add('active');
         }
-
-        function showError(message) {
-            document.getElementById('error').textContent = message;
-        }
-
-        function refreshData() {
-            if (scriptUrl) loadData();
-        }
-
-        // Load on startup if URL is saved
-        window.onload = () => {
-            const saved = localStorage.getItem('scriptUrl');
-            if (saved) {
-                scriptUrl = saved;
-                document.getElementById('scriptUrl').value = saved;
-                loadData();
-            }
-        };
-
-        // Auto-refresh every 2 minutes
-        setInterval(refreshData, 120000);
     </script>
 </body>
 </html>
